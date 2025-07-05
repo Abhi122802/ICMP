@@ -1,0 +1,91 @@
+.custom-appbar {
+  background: linear-gradient(90deg, #0d47a1 0%, #1976d2 100%);
+  box-shadow: 0 4px 24px 0 rgba(13, 71, 161, 0.15);
+  opacity: 0.97;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.custom-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5rem;
+  min-height: 72px;
+  
+}
+
+.logo-img {
+  height: 54px;
+  margin-right: 1.2rem;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px 0 rgba(25, 118, 210, 0.08);
+}
+
+.logo-img:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 4px 16px 0 rgba(25, 118, 210, 0.25), 0 0 0 4px #fff3;
+}
+
+.nav-btn {
+  /* font-weight: 500; */
+  color: #fff !important;
+  text-transform: none;
+  /* margin-left: 10px !important; */
+  margin-right: 40px !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  background: transparent;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 1px 4px 0 rgba(25, 118, 210, 0.07);
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(90deg, #1976d2 0%, #0d47a1 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(25, 118, 210, 0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .custom-toolbar {
+    padding: 0 1rem;
+    min-height: 60px;
+  }
+  .logo-img {
+    height: 40px;
+    margin-right: 0.7rem;
+  }
+  .nav-btn {
+    font-size: 0.95rem; margin-left: 20px !important;
+  }
+  .css-1s52t23-MuiButtonBase-root-MuiIconButton-root{
+    margin-right: 20px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .custom-toolbar {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    min-height: 48px;
+  }
+  .logo-img {
+    height: 32px;
+    margin-right: 0.5rem;
+  }
+  .nav-btn {
+    font-size: 0.9rem;
+    /* padding: 0.3rem 0.7rem; */
+    margin-left: 20px !important;
+    margin-top: 0.3rem;
+  }
+}

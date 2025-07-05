@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* Ensure all components fit all screen sizes */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Responsive utility */
+.responsive-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
 }
