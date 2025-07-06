@@ -6,6 +6,7 @@ import Header from './components/Header/header';
 import Footer from './components/footer/footer';
 import Courses from './pages/courses/Courses';
 import CourseDetails from './pages/CourseDetails';
+import About from './pages/About.js/about';
 function App() {
   return (
     <div>
@@ -13,7 +14,7 @@ function App() {
       <Routes>
         
         <Route path="/" element={<Home />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/about" element={<About />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:id" element={<CourseDetails />} />
       </Routes>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {
     Box,
@@ -19,6 +19,11 @@ import {
     TableContainer,
     TableHead,
     TableRow,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    TextField,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SchoolIcon from '@mui/icons-material/School';
@@ -344,6 +349,25 @@ const CourseDetails = () => {
     const { id } = useParams();
     const course = courseData[id] || defaultCourse;
 
+    // Dialog state for Apply Now form
+    const [open, setOpen] = useState(false);
+    const [form, setForm] = useState({ name: '', email: '', phone: '' });
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission (API call, etc.)
+        alert('Application submitted!');
+        setOpen(false);
+        setForm({ name: '', email: '', phone: '' });
+    };
+
     return (
         <Box
             sx={{
@@ -482,6 +506,7 @@ const CourseDetails = () => {
 
                 <Divider sx={{ my: 3 }} />
 
+                {/* Apply Now Button and Dialog */}
                 <Box sx={{ textAlign: 'center', mt: 2 }}>
                     <Button
                         variant="contained"
@@ -497,10 +522,90 @@ const CourseDetails = () => {
                             textTransform: 'none',
                             letterSpacing: 1,
                         }}
+                        onClick={handleOpen}
                     >
                         Apply Now
                     </Button>
                 </Box>
+
+<Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
+    <DialogTitle sx={{ textAlign: 'center', fontWeight: 700, color: '#1976d2', fontSize: '1.5rem' }}>
+        Apply for {course.name}
+    </DialogTitle>
+    <DialogContent sx={{ py: 3 }}>
+        <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2,
+                mt: 1,
+            }}
+        >
+            <TextField
+                margin="dense"
+                required
+                fullWidth
+                label="Full Name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                variant="outlined"
+                InputProps={{
+                    style: { borderRadius: 12 }
+                }}
+                InputLabelProps={{
+                    style: { fontWeight: 500 }
+                }}
+                helperText="Enter your full name as per documents"
+            />
+            <TextField
+                margin="dense"
+                required
+                fullWidth
+                label="Email Address"
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                variant="outlined"
+                InputProps={{
+                    style: { borderRadius: 12 }
+                }}
+                InputLabelProps={{
+                    style: { fontWeight: 500 }
+                }}
+                helperText="We'll never share your email."
+            />
+            <TextField
+                margin="dense"
+                required
+                fullWidth
+                label="Phone Number"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                variant="outlined"
+                InputProps={{
+                    style: { borderRadius: 12 }
+                }}
+                InputLabelProps={{
+                    style: { fontWeight: 500 }
+                }}
+                helperText="Enter a valid mobile number"
+            />
+            <DialogActions sx={{ justifyContent: 'space-between', mt: 2 }}>
+                <Button onClick={handleClose} color="secondary" variant="outlined" sx={{ borderRadius: 2 }}>
+                    Cancel
+                </Button>
+                <Button type="submit" variant="contained" color="primary" sx={{ borderRadius: 2, px: 4 }}>
+                    Submit
+                </Button>
+            </DialogActions>
+        </Box>
+    </DialogContent>
+</Dialog>
             </Paper>
         </Box>
     );
